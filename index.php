@@ -20,6 +20,7 @@ include ("./controller/controller_index.php");
                     <td><?php echo $book->getTitulo(); ?></td>
                     <td><?php echo $book->getAutor(); ?></td>
                     <td><?php echo $book->getnumPag(); ?></td>
+                    <td><a href="./controller/controller_delete.php?id=<?php echo $book->getId();?>">Borrar</a></td>
                 </tr>
 <?php } ?>
         </table>

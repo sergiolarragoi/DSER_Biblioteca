@@ -58,5 +58,15 @@ class libro_model extends libro_class {
 
         $this->CloseConnect();
     }
+    
+     public function delete() {
+
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        $sql = "CALL spDelete('" . $this->getId() . "')"; // SQL sententzia - sentencia SQL
+
+        $this->link->query($sql);
+
+        $this->CloseConnect();
+    }
 
 }
