@@ -2,7 +2,7 @@
 <?php
 include ("./model/libro_class.php");
 include ("./model/libro_model.php");
-include ("./controller/controller_index.php");
+include ("./controller/controller_update.php");
 ?>
 <html>
     <head>
@@ -10,33 +10,16 @@ include ("./controller/controller_index.php");
         <title>Biblioteca</title>
     </head>
     <body>
-        <h2>Títulos biblioteca</h2>
-        <table name="tableBooks" border="1">
-            <?php
-            foreach ($listaLibros as $book) {
-                ?>
-                <tr>
-                    <td><?php echo $book->getId(); ?></td>
-                    <td><?php echo $book->getTitulo(); ?></td>
-                    <td><?php echo $book->getAutor(); ?></td>
-                    <td><?php echo $book->getnumPag(); ?></td>
-                    <td><a href="./controller/controller_delete.php?id=<?php echo $book->getId(); ?>">Editar</a></td>
-                    <td><a href="./controller/controller_delete.php?id=<?php echo $book->getId(); ?>">Borrar</a></td>
-                </tr>
-            <?php } ?>
-        </table>
-
-        <br>
         <h4>Add new book:</h4>
         <form action="./controller/controller_insert.php">
             Título:<br>
-            <input type="text" name="titulo">
+            <input type="text" name="titulo" value="<?php echo $book->getTitulo(); ?>">
             <br>
             Autor:<br>
-            <input type="text" name="autor">
+            <input type="text" name="autor" value="<?php echo $book->getAutor(); ?>">
             <br>
             Número de páginas:<br>
-            <input type="text" name="numPag">
+            <input type="text" name="numPag" value="<?php echo $book->getnumPag(); ?>">
             <br><br>
             <input type="submit" value="Update">
         </form> 

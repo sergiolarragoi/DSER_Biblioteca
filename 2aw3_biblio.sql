@@ -41,6 +41,18 @@ INSERT INTO libros(libros.titulo,libros.autor,libros.numPag)
 VALUES (titulo,autor,numPag);
 END$$
 
+DROP PROCEDURE IF EXISTS `spDelete`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDelete`(IN `idLibro` INT) NO SQL
+BEGIN
+DELETE FROM libros WHERE id = idLibro;
+END$$
+
+DROP PROCEDURE IF EXISTS `spSelectOneBook`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSelectOneBook`(IN `miId` INT) NO SQL
+BEGIN
+SELECT * FROM `libros` WHERE id = miId;
+END$$
+
 DELIMITER ;
 
 -- --------------------------------------------------------

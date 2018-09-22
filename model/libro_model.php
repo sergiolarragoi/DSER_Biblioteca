@@ -69,4 +69,26 @@ class libro_model extends libro_class {
         $this->CloseConnect();
     }
 
+    public function update() {
+
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        $sql = "CALL spSelectOneBook('" . $this->getId() . "')"; // SQL sententzia - sentencia SQL
+
+         $this->list = array(); // objetuaren list atributua array bezala deklaratzen da - 
+        //se declara como array el atributo list del objeto
+
+        $result = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
+        // se guarda en result toda la información solicitada a la bbdd
+
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $new = new libro_class();
+            $new->setId($row['id']);
+            $new->setTitulo($row['titulo']);
+            $new->setAutor($row['autor']);
+            $new->setNumPag($row['numPag']);
+            array_push($this->list, $new);
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+    }
 }
