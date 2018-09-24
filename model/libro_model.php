@@ -69,7 +69,7 @@ class libro_model extends libro_class {
         $this->CloseConnect();
     }
 
-    public function update() {
+    public function select() {
 
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         $sql = "CALL spSelectOneBook('" . $this->getId() . "')"; // SQL sententzia - sentencia SQL
@@ -81,14 +81,22 @@ class libro_model extends libro_class {
         // se guarda en result toda la información solicitada a la bbdd
 
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $new = new libro_class();
-            $new->setId($row['id']);
-            $new->setTitulo($row['titulo']);
-            $new->setAutor($row['autor']);
-            $new->setNumPag($row['numPag']);
-            array_push($this->list, $new);
+            
+            $this->setId($row['id']);
+            $this->setTitulo($row['titulo']);
+            $this->setAutor($row['autor']);
+            $this->setNumPag($row['numPag']);
+            
         }
         mysqli_free_result($result);
+        $this->CloseConnect();
+    }
+    
+    public function update(){
+        
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        $sql = "CALL spUpdate('" . $this->getId() . "','" . $this->getTitulo() . "','" . $this->getAutor() . "','" . $this->getNumPag() . "')"; // SQL sententzia - sentencia SQL
+        $this->link->query($sql);
         $this->CloseConnect();
     }
 }

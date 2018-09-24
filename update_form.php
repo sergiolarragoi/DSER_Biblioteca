@@ -2,7 +2,7 @@
 <?php
 include ("./model/libro_class.php");
 include ("./model/libro_model.php");
-include ("./controller/controller_update.php");
+include ("./controller/controller_select.php");
 ?>
 <html>
     <head>
@@ -11,15 +11,15 @@ include ("./controller/controller_update.php");
     </head>
     <body>
         <h4>Add new book:</h4>
-        <form action="./controller/controller_insert.php">
+        <form action="./controller/controller_update.php">
             Título:<br>
-            <input type="text" name="titulo" value="<?php echo $book->getTitulo(); ?>">
+            <input type="text" name="titulo" value="<?php echo $libro->getTitulo(); ?>">
             <br>
             Autor:<br>
-            <input type="text" name="autor" value="<?php echo $book->getAutor(); ?>">
+            <input type="text" name="autor" value="<?php echo $libro->getAutor(); ?>">
             <br>
             Número de páginas:<br>
-            <input type="text" name="numPag" value="<?php echo $book->getnumPag(); ?>">
+            <input type="text" name="numPag" value="<?php echo $libro->getnumPag(); ?>">
             <br><br>
             <input type="submit" value="Update">
         </form> 

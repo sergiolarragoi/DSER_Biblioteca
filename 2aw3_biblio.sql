@@ -53,6 +53,12 @@ BEGIN
 SELECT * FROM `libros` WHERE id = miId;
 END$$
 
+DROP PROCEDURE IF EXISTS `spUpdate`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdate`(IN `_id` INT, IN `_titulo` VARCHAR(50), IN `_autor` VARCHAR(50), IN `_numPag` INT) NO SQL
+BEGIN
+UPDATE libros SET  libros.titulo =_titulo, libros.autor= _autor, libros.numPag = _numPag WHERE libros.id = _id;
+END$$
+
 DELIMITER ;
 
 -- --------------------------------------------------------

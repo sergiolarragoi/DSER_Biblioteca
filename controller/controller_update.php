@@ -9,12 +9,17 @@ $libro = new libro_model();
 $id = filter_input(INPUT_GET, "id");
 $libro->setId($id);
 
+$titulo = filter_input(INPUT_GET, "titulo");
+$libro->setTitulo($titulo);
+
+$autor = filter_input(INPUT_GET, "autor");
+$libro->setAutor($autor);
+
+$numPag = filter_input(INPUT_GET, "numPag");
+$libro->setNumPag($numPag);
+
+$libro->update();
 
 
-$libro->delete();
 
-
-
-header('Location: ../update_form.php');
-
-
+header('Location: ../index.php');
