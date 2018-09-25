@@ -1,12 +1,13 @@
 <?php
+
 //namespace model;
-class libro_class
-{
+class libro_class {
+
     protected $id;
     protected $titulo;
     protected $autor;
     protected $numPag;
-    
+
     function getId() {
         return $this->id;
     }
@@ -39,8 +40,4 @@ class libro_class
         $this->numPag = $numPag;
     }
 
-
-    
-    
 }
-

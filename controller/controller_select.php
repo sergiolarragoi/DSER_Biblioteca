@@ -1,7 +1,5 @@
 <?php
 
-
-
 $id = filter_input(INPUT_GET, "id");
 $libro = new libro_model();
 

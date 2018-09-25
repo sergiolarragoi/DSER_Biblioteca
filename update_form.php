@@ -12,6 +12,8 @@ include ("./controller/controller_select.php");
     <body>
         <h4>Add new book:</h4>
         <form action="./controller/controller_update.php">
+            
+            <input type="hidden" name="id" value="<?php echo $libro->getId(); ?>">
             Título:<br>
             <input type="text" name="titulo" value="<?php echo $libro->getTitulo(); ?>">
             <br>

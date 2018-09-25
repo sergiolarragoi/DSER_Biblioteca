@@ -58,8 +58,8 @@ class libro_model extends libro_class {
 
         $this->CloseConnect();
     }
-    
-     public function delete() {
+
+    public function delete() {
 
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         $sql = "CALL spDelete('" . $this->getId() . "')"; // SQL sententzia - sentencia SQL
@@ -74,29 +74,29 @@ class libro_model extends libro_class {
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         $sql = "CALL spSelectOneBook('" . $this->getId() . "')"; // SQL sententzia - sentencia SQL
 
-         $this->list = array(); // objetuaren list atributua array bezala deklaratzen da - 
+        $this->list = array(); // objetuaren list atributua array bezala deklaratzen da - 
         //se declara como array el atributo list del objeto
 
         $result = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
         // se guarda en result toda la información solicitada a la bbdd
 
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            
+
             $this->setId($row['id']);
             $this->setTitulo($row['titulo']);
             $this->setAutor($row['autor']);
             $this->setNumPag($row['numPag']);
-            
         }
         mysqli_free_result($result);
         $this->CloseConnect();
     }
-    
-    public function update(){
-        
+
+    public function update() {
+
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         $sql = "CALL spUpdate('" . $this->getId() . "','" . $this->getTitulo() . "','" . $this->getAutor() . "','" . $this->getNumPag() . "')"; // SQL sententzia - sentencia SQL
         $this->link->query($sql);
         $this->CloseConnect();
     }
+
 }
